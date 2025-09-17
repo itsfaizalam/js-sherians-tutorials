@@ -1,0 +1,307 @@
+var = ES5 (Older version)
+let and const = ES6 (Latest Version)
+//======================
+// Words vs keywords
+//========================
+/*
+faiz - words
+sam - words
+for - keywords
+
+keywords = var, let, const, for */
+
+/// var let const
+
+var num = ((23*12-89)%45)*122;
+
+
+a = 12; // Don't use this method
+var a;
+var a = 12;
+let a;
+let a = 12;
+const a = 12;
+
+//================================
+/// declareations and initilization
+//================================
+var a; // declare karna
+var a = 12; // declare and initialize(first value dena)
+
+let a;
+let a = 12;
+
+
+//// understanding
+var a = 12;
+
+// agar valud var se banate hai to 
+// 1. ye window me add karta hai. (Window)-> ab Window kya hota hai baad me pata chalega
+// 2. function scoped hota hai. matlab ye variable ke ander use hota hai jo ke baad me pata chalega chapter 7 me.
+// 3. aap phir se declare kar sakte hai and error nahi aayega
+
+e.g
+var a = 12;
+var a = 13;
+
+// ye exampel me same variable me different value use huye hai but phir bhi koi error nahi aayega. Ye ek bahut bada bug bol sakte hai.
+
+isliye hume var ke jagah hume 'let' keywords use karna hai. because ye galdi karne se rokta hai.
+
+// let -> let tab use karenge jab variable aage jake futerue me change ho sakta hai.
+
+// const -> const tab use karenge jab variable humesha same rahega matblab constant rahega.
+
+
+//=============================================
+//// scope (global, block, functional)
+//==============================================
+
+
+// 1. Global Scope: ye variable pure programming me kahi bhi use ho sakta hai.
+var a = 12;
+
+
+
+// 2. Functional Scope: ye variable bas function ke ander use ho sakta hai.
+function abcd(){
+    var a = 12; 
+}
+
+// one more example functional scope
+function abcd() {
+    if (true) {
+        var c = 12; // is case me ye variable apne nearest funciont me work karega and ye bhi ek 'functional scope' hai.
+    }
+}
+
+
+
+// 3. Block Scope: 
+{} // This is the block
+
+// 'var' functional scope hota hai matlab function ke ander toh kaam karta hai but sirf '{}' block hoga to kaam karega bur pure code me as a global scope work karega.
+
+{ // Block
+ var a = 12; // var variable use hua hai jiske wajha se ye block variable nahi raha ye as a global variable bana gaya but ye browser engine isko baad me matlab code runtime ke waqut usko apne aap hi kisi function me daal dega.
+}
+
+{// Block
+ let a = 12; // abh isme let vavriable use hua hai toh ye block ki puri respect karega and ache se work karega and iske ander ka variable bus is block ke ander hi kaam karega aur ye ek proper 'block scope' hua.
+
+}
+
+
+
+//============================
+// Reassignment, Redeclareation
+//============================
+
+
+var a = 12 
+// 'var a' is a declareation and '= 12;' is initilization
+a = 23 // Reassignment 
+
+// again we assign with var a with new value its allowed with 'var' and we called this 'redeclareation'
+// so, Redeclareation is possible with 'var' but not possible with 'let'
+var a = 53 //
+
+
+let b = 12;
+b = 32; // here we 'Reassignment' the value of b = 32
+//let b = 63; // 'Redeclareation' is also not allowe with 'let' keywords
+
+
+//============================
+// Temporal Dead Zone (TDZ)
+//============================
+// TDZ = utna area jitne mein js ko pata toh hai ki variable exist karta hai but wo apko value nahi de sakta hai. 
+// Aur ye TDZ let aur const me hota hai but var me nahi hota hai iske liye var wala example dekho.
+
+
+//console.log(a);
+///let a = 12;
+
+// in this case console will throw error : Uncought ReferenceError: Cannot access 'a' before initialization at script.js
+// This is showing due to we write the console.log before the value initialization
+
+
+// TDZ for  variable 'c' from line 9-13 and TDZ fro variable 'a' from line 1-7
+///let c = 123;
+
+// var me nahi hota hai iske var is a kind of Gopi bahu jo bolo wo kar degi isko kisi chj se koi problem nahi hota :D and isme kya error aata hai wo bhi dekhte hai is var ke e.g. me.
+
+console.log(d);
+
+var d = 36; 
+
+// output : koi error nahi aata hai ye ek tarah se hoisting me chala jata hai. Abh 'Hoisting' hum abhi padhenge.
+// but let ke example me isme pura error bata diya tha ki console me print kyun nahi ho sakta with proper error.
+
+
+//============================
+// Hoisting impact per type
+//============================
+
+// Hoisting : Ek variable ko jab js mein banate hai toh wo varaible do hisso me tut jata hai and uska 'declare' part upar chala jata hai and uska 'initiallization' part neeche reh jata hai. E.g :-
+
+
+
+var = undefined; // THIS  IS UPPER PART
+/* 
+var a = 12  // variable declareation and initiallization
+Now hoisting view is like this
+var = undefined;
+a = 12;
+*/
+a = 12; // THIS IS NICHE WALA PART
+
+//==================
+
+
+console.log(a);
+let a = 12;
+// output: Cannot access 'a' before initialization
+// iska matlab ye hua ki let me bhi hoisting hoti hai tabhi isme ye error aaya and error me ye msg "Cannot access 'a' before initialization" aaya matlab let wali value bihind the scene kuch is tarah se tuti hogi
+
+/*
+let a = undefined
+a = 12;
+aur ye declare wala part kuch is tarah se top pe move ho gaya hoga behind the scene.
+----------------
+let a = undefined
+console.log(a); // but this is in TDZ (Temporal dead zone)
+a = 12;
+---------------
+*/
+
+/*
+----------
+conclusion :
+---------- 
+var -> hoist -> undefined // undefined error aata hai
+let -> hoist -> X // Refrence error aata hai
+const -> hoist -> X // Refrence error aata hai.
+*/
+
+
+
+//===========================================
+// Practice, Revision and clear the Fundamentals again
+//=========================================== 
+
+var x = 1; // global
+{
+    var x = 2; // block ko respect nahi karta sirf function ko respect karta hai toh ye bhi global ho jata hai
+}
+console.log(x);
+
+/*
+output:
+script.js:13 Uncaught ReferenceError: a is not defined
+    at script.js:13:28
+*/
+
+let a = 10;
+{
+    let a = 20;
+    console.log("Inside a :", a)
+}
+
+console.log("Outside a :", a)
+/*
+output:
+Inside a : 20
+script.js:15 Outside a : 10
+*/
+
+// Questions for pracitce: 
+// Create Block-level counter using let/const?
+
+//========================
+// EXERCISE AND EXAMPLE 
+//=======================
+if (true){
+    var a = 1;
+    let b = 2;
+
+}
+console.log(a);
+console.log(b);
+/*
+output:
+1
+script.js:8 Uncaught ReferenceError: b is not defined
+    at script.js:8:13
+(anonymous)	@	script.js:8
+*/
+
+// const ke sath value Reassignment possible nahi hai but person.name ke sath value update kiya ja sakta hai.
+const person = { name: "Faiz" };
+//  person.name = "Sam"; // allowed
+console.log(person)
+person = {} // not allowed
+
+/*
+output:
+Sam
+*/
+
+//============================
+// UNDERSTANDING: Object.freeze
+//============================
+const person = { name: "Faiz", age: 23 };
+
+Object.freeze(person);
+
+person.name = "Sam";   // ❌ ignored in non-strict mode, error in strict mode
+person.city = "Delhi"; // ❌ cannot add
+delete person.age;     // ❌ cannot delete
+
+console.log(person); // { name: "Faiz", age: 23 }
+
+
+//===============
+// data types
+//================
+
+// data ka types
+
+// js ke ander ise 2 major types ke ander divide kiya gyaa hai.
+// "Primitives" data types and "Reference" data types.
+
+// Primitives Data Types: - aisi saari values jinko copy karne par tumhe ek real copy mil jaaye.
+// e.g. string, number, boolean, null, undefined, symbol, bigint
+
+
+let a = 12; // iske pas apna 12 hai
+let b = a; // iske pas apna 12 hai
+a = a + 4; // ye check karne k liye is wale a ke wajah se result 16 aayega
+/*
+output:
+a
+16
+b
+12
+*/
+
+
+// References Data Types: - inko copy karne par real copy nahi milegi but aapko reference milega parent ka.
+// e.g. arrays, objects, functions
+//      []        {}        ()
+
+let a = [1,2,3];
+let b = a;
+
+b.pop(); // array se last num remove karne liye use hota hai
+
+/*
+output:
+a
+(2) [1, 2]
+b
+(2) [1, 2]
+*/
+// so output se humen pata chalta hai kiy b se value ko hatane se a ke value bhi remove ho ja rahi hai, jab ki Primitives Data Types me aisa nahi tha.
+// Things to remember: toh hum References Data Types me copy karne ke liye "Spread operator se karte hai"
+
